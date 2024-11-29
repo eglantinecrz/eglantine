@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<table>
+    <tr>
+        <td></td> <td></td> <td></td> <td></td> <td></td>
+        <td></td> <td></td> <td></td> <td></td>
+    </tr>
+    <tr>
+        <td></td> <td class="gris"></td> <td class="gris"></td> <td></td> <td></td>
+        <td class="gris"></td> <td class="gris"></td> <td></td> <td></td>
+    </tr>
+    <tr>
+        <td></td> <td class="gris"></td> <td></td> <td class="gris"></td> <td></td>
+        <td class="gris"></td> <td></td> <td class="gris"></td> <td></td>
+    </tr>
+    <tr>
+        <td></td> <td class="gris"></td> <td class="gris"></td> <td class="gris"></td> <td></td>
+        <td class="gris"></td> <td></td> <td class="gris"></td> <td></td>
+    </tr>
+    <tr>
+        <td></td> <td class="gris"></td> <td class="gris"></td> <td class="gris"></td> <td></td>
+        <td class="gris"></td> <td></td> <td class="gris"></td> <td></td>
+    </tr>
+    <tr>
+        <td></td> <td class="gris"></td> <td></td> <td class="gris"></td> <td></td>
+        <td class="gris"></td> <td></td> <td class="gris"></td> <td></td>
+    </tr>
+    <tr>
+        <td></td> <td class="gris"></td> <td class="gris"></td> <td></td> <td></td>
+        <td class="gris"></td> <td class="gris"></td> <td></td> <td></td>
+    </tr>
+    <tr>
+        <td></td> <td></td> <td></td> <td></td> <td></td>
+        <td></td> <td></td> <td></td> <td></td>
+    </tr>
+
+</table>
+<body >Donnez les coordonnées</body>
+<label for="idDuComposant">X:</label>
+<input type="text" name="nom" id="idTexte" />
+<label for="idDuComposant">Y:</label>
+<input type="text" name="nom" id="idTexte" />
+<input type="submit" value="envoyer" /><br><br>
+
+
+<body>voici les 4 briques selectionnées :</body> <br>
+
+
+
+
+<form method="POST" name="pioche">
+    <ul>        <li><label><input type="radio" name="nom"  value="val1" />brique 1 : {{SESSION['briques_ale'][0]}}</label><br></li>
+                <li><label><input type="radio" name="nom"  value="val2" />brique 2 : {{SESSION['briques_ale'][1]}}</label><br></li>
+                <li><label><input type="radio" name="nom"  value="val3" />brique 3 : {{SESSION['briques_ale'][2]}}</label><br></li>
+                <li><label><input type="radio" name="nom"  value="val4" />brique 4 : {{SESSION['briques_ale'][3]}}</label><br></li>
+    </ul>
+    <input type="submit" name="bouton1" value="valider" /><br><br>
+</form>
+
+
+
+
+
+
+    
+
+{% endblock %}

@@ -1,0 +1,130 @@
+body {
+    background-color: #FFFFFF;
+    height: 100%;
+    margin: 0;
+}
+
+html {
+    height: 100%;
+}
+
+header,
+nav,
+main,
+footer {
+    padding: 1em 0;
+}
+
+header {
+    background-color: #FF9900;
+    text-align: center;
+    border-radius: 1em;
+}
+
+#div-central {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: auto;
+    box-sizing: border-box;
+    height: 100vh; /* Assure que le conteneur principal occupe toute la hauteur */
+}
+
+nav {
+    flex: 2;
+    height: 100%; /* La barre de navigation occupe toute la hauteur disponible */
+    display: flex;
+    flex-direction: column;
+    background-color: #b59ff7;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: 2em;
+    line-height: 2em;
+}
+
+nav > ul {
+    padding-left: 0.5em;
+}
+
+nav a {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+nav a:visited {
+    color: #0000FF;
+    text-decoration: none;
+}
+
+main {
+    flex: 10;
+    background-color: #FFFFFF;
+    padding-left: 3em;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #669933;
+    border-radius: 1em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.fond-jaune {
+    background-color: yellow;
+}
+
+.alert-error {
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0rem;
+    border: 2px solid transparent;
+    border-radius: 0.25rem;
+    color: rgb(0, 0, 0);
+    background-color: #ff00003d;
+    border-color: #ff0000;
+}
+
+.alert-success {
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0rem;
+    border: 2px solid transparent;
+    border-radius: 0.25rem;
+    color: rgb(0, 0, 0);
+    background-color: #48ff004e;
+    border-color: #00ff00;
+}
+
+.alert-warning {
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: rgb(0, 0, 0);
+    background-color: #ffda07c8;
+    border-color: #ffb300;
+}
+
+table {
+    table-layout: fixed;
+    width: 600px;
+    height: 300px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+td {
+    border: 1px solid black;
+}
+
+.gris {
+    background: repeating-linear-gradient(
+        45deg, /* Angle des hachures */
+        gray, /* Couleur de départ */
+        gray 5px, /* Largeur d'une ligne grise */
+        transparent 5px, /* Espace entre les lignes */
+        transparent 10px /* Largeur totale de chaque répétition */
+    );
+}

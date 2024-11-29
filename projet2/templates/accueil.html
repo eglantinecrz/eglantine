@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h2>Le site pour jouer aux briques comme un charpentier !</h2>
+
+<p id="parag_description">
+	Vous pouvez jouer à votre jeu préféré en cours de développement !.
+	<br>
+	Utilisez le menu à gauche pour découvrir les fonctionnalités de ce site.
+</p>
+
+<p>Que savoir sur ce jeu ?</p>
+<ul>
+	<li>Il y a {{REQUEST_VARS['nb.j']}} joueurs</li>
+	<li>Il y a {{REQUEST_VARS['nb.t']}} tours</li>
+	<li>Il y a {{REQUEST_VARS['nb.p']}} parties</li>
+	<li>Voici les 5 couleurs des briques les plus utilisées : {{REQUEST_VARS['top_couleurs']}}</li>
+	<li>Les stats de chaque joueur !!!
+		<ul>
+			{%for i in REQUEST_VARS['stats_joueur'] %}
+				<li>id : {{ i[0]}}, prénom : {{ i[1]}} , min : {{ i[2]}} , max : {{ i[3]}}</li>
+			{% endfor %}
+		</ul>
+	</li>
+	<li>Voici le nombres de tours moyens pour chaque couple (mois,année) :
+		<ul>
+			{% for i in REQUEST_VARS['stat_m_a'] %}
+			<li> année : {{i[0]}}, mois : {{i[1]}}, nombre moyens de tours : {{i[2]}}</li>
+			{% endfor %}
+		</ul> 
+	</li>
+	<li>voici les 3 parties avec le splus grandes briques placées {{REQUEST_VARS['stat_parties']}}</li>
+</ul>
+
+<!-- <div>
+	<img src="projet2/static/img/logo-lyon1.png" />
+</div> -->
+
+{% include 'message.html' %}
+
+{% endblock %}

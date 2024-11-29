@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<h4>Donnez les dimensions de votre grille</h4><br>
+<form method="POST" >
+	<label for="largeur">hauteur : </label>
+		<input type="number" name="largeur" /><br><br>
+		<label for="longueur">longueur : </label>
+		<input type="number" name="longueur" /><br><br>
+		<input type="submit" value="valider" name="grille"/>
+</form>
+
+
+{% if POST['largeur'] and POST['longueur'] %}
+	<p>Valeur :
+		{{POST['largeur'][0]}}
+		{{POST['longueur'][0]}}
+	</p>
+{% endif %}
+ 
+<h3>Grille aléatoire </h3>
+{% if REQUEST_VARS['hauteur_g'] and REQUEST_VARS['longueur_g'] %}
+	<table>
+		{% for ligne in SESSION['grille'] %}
+			<tr>
+			{% for case in ligne %}
+				{% if case == -1 %}
+				<td class="gris"></td>
+				{% else %}
+				<td></td>
+				{% endif %}
+			{% endfor %}
+		
+			</tr>
+		{% endfor %}
+
+	</table>
+{% endif %}
+
+
+{% endblock %} 
