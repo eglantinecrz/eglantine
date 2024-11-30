@@ -20,7 +20,7 @@
 {% endif %}
  
 <h3>Grille aléatoire </h3>
-{% if REQUEST_VARS['hauteur_g'] and REQUEST_VARS['longueur_g'] %}
+{% if REQUEST_VARS['selec-long'] and REQUEST_VARS['selec-hauteur'] %}
 	<table>
 		{% for ligne in SESSION['grille'] %}
 			<tr>

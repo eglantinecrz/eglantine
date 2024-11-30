@@ -1,100 +1,64 @@
+
 import random
+
 from controleurs.includes import generate_grille
 
-if POST and 'grille' in POST:
-    REQUEST_VARS['longueur_g']= int(POST['longueur'][0])
-    REQUEST_VARS['hauteur_g']= int(POST['largeur'][0])
-    REQUEST_VARS['colonne_aleatoire']  = random.randint(0,  REQUEST_VARS['longueur_g']-1)
-    REQUEST_VARS['ligne_aleatoire']= random.randint(0, REQUEST_VARS['hauteur_g']-1)
-    L= REQUEST_VARS['colonne_aleatoire']
-    C = REQUEST_VARS['ligne_aleatoire']
-    #print(REQUEST_VARS['hauteur_g'])
-    REQUEST_VARS['nb_cases'] = REQUEST_VARS['longueur_g']*REQUEST_VARS['hauteur_g']
-    print(REQUEST_VARS['nb_cases'])
-    cibles_10 = int(0.1*REQUEST_VARS['nb_cases'])+1
-    #print(cibles_10)
-    cibles_20 = int(0.2*REQUEST_VARS['nb_cases'])+1
-    #print(cibles_20)
-    REQUEST_VARS['cibles'] = random.randint(cibles_10,cibles_20)
-    print(REQUEST_VARS['cibles'])
-    SESSION['grille']=generate_grille(REQUEST_VARS['longueur_g'],REQUEST_VARS['hauteur_g'])
+if POST and "grille" in POST :
+    REQUEST_VARS['selec-long'] = int(POST['longueur'][0])
+    REQUEST_VARS['selec-hauteur'] = int(POST['largeur'][0])
+    SESSION['grille'] = generate_grille(int(POST['longueur'][0]) , int(POST['largeur'][0]))
     print(SESSION['grille'])
-    
 
-    SESSION['grille'][C][L] = -1
-    print(SESSION['grille'][C][L])
+
+
+    nbcase = int(POST['longueur'][0]) * int(POST['largeur'][0])
+    aleacible = int(random.uniform(nbcase*0.1,nbcase*0.2)) +1 
+
+    REQUEST_VARS['cible-long'] = random.randint(0,int(POST['longueur'][0])-1)
+    REQUEST_VARS['cible-hauteur'] = random.randint(0,int(POST['largeur'][0])-1)
+
+
+
+    SESSION['grille'][REQUEST_VARS['cible-hauteur']][REQUEST_VARS['cible-long']] = -1 
     print(SESSION['grille'])
-    print("ligne",C)
-    print("colonne",L)
-    direction = ['haut','bas','gauche','droite']
-    
-    while REQUEST_VARS['cibles'] >0 :
-        r = random.choice(direction)
-        
-        if r=='haut':
-            
-            if L+1 >= REQUEST_VARS['hauteur_g']:
-                
-                direction1 = ['bas','gauche','droite']
-                r = random.choice(direction1)
-            
-            if SESSION['grille'][C][L+1] == 0 :
-                
-                SESSION['grille'][C][L+1] = -1
-                L=L+1
-                REQUEST_VARS['cibles']=REQUEST_VARS['cibles']-1
-            
-            direction1 = ['bas','gauche','droite']
-            r = random.choice(direction1)
-        
-        if r=='bas':
-            
-            if L-1 < 0:
-                
-                direction2 = ['haut','gauche','droite']
-                r = random.choice(direction2)
-            
-            if SESSION['grille'][C][L-1] == 0 :
-                SESSION['grille'][C][L-1] = -1
-                L=L-1
-                REQUEST_VARS['cibles']=REQUEST_VARS['cibles']-1
-            
-            direction2 = ['haut','gauche','droite']
-            r = random.choice(direction2)
-        
-        if r=='gauche':
-            
-            if C-1 <0:
-                
-                direction3 = ['bas','haut','droite']
-                r = random.choice(direction3)
-            
-            if SESSION['grille'][C-1][L] == 0 :
-                
-                SESSION['grille'][C-1][L] = -1
-                C=C-1
-                REQUEST_VARS['cibles']=REQUEST_VARS['cibles']-1
-            
-            direction3 = ['bas','haut','droite']
-            r = random.choice(direction3)
-        
-        if r=='droite':
-            
-            if C+1 >= REQUEST_VARS['longueur_g']:
-                
-                direction4 = ['bas','gauche','haut']
-                r = random.choice(direction4)
-            
-            if SESSION['grille'][C+1][L] == 0 :
-               
-                SESSION['grille'][C+1][L] = -1
-                C=C+1
-                REQUEST_VARS['cibles']=REQUEST_VARS['cibles']-1
-            
-            direction4 = ['bas','gauche','haut']
-            r = random.choice(direction4)
+
+    Listchoix = [(0,1),(0,-1),(1,0),(-1,0)]
+    print(len(Listchoix))
 
 
-    
+    for _ in range(aleacible - 1):
+        listtemp = [(0,1),(0,-1),(1,0),(-1,0)]
+        print(listtemp)
+        while len(listtemp) != 0 :
+
+            direction = random.choice(listtemp)
+
+            print(direction)
+            listtemp.remove(direction)
+            print(listtemp)
+            print(REQUEST_VARS['cible-long'])
+            print(REQUEST_VARS['cible-hauteur'])
+
+
+            if((REQUEST_VARS['cible-long'] != 0) or (direction[1] != -1) ):
+                print("droit d'aller a gauche")
+
+                if((REQUEST_VARS['cible-long'] != REQUEST_VARS['selec-long']-1) or (direction[1] != 1)) : 
+                    print("droit d'aller a droite")
+
+                    if( (REQUEST_VARS['cible-hauteur'] != 0) or (direction[0] != -1) ) :
+                        print("droit d'aller en haut")
+
+                        if((REQUEST_VARS['cible-hauteur'] != REQUEST_VARS['selec-hauteur']-1) or (direction[0] != 1)) :
+                            print("droit d'aller en bas ")
+
+                            if( SESSION['grille'][REQUEST_VARS['cible-hauteur'] + direction[0] ][REQUEST_VARS['cible-long'] + direction[1]] != -1 ):
+                                print("pas deja existant")
+                                REQUEST_VARS['cible-long'] += direction[1]
+                                REQUEST_VARS['cible-hauteur'] += direction[0]
+                                SESSION['grille'][REQUEST_VARS['cible-hauteur']][ REQUEST_VARS['cible-long']] = -1 
+                                break
+            if(len(listtemp) ==0):
+                print("IMPOSSIBLE")
 
 
