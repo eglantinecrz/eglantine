@@ -30,11 +30,15 @@
 		</ul> 
 	</li>
 	<li>voici les 3 parties avec le splus grandes briques placées {{REQUEST_VARS['stat_parties']}}</li>
+	<li>voici les parties avec le plus grand/petit nombres de pièce défaussée et piochée :
+			<ul>la partie numéro {{REQUEST_VARS['grand_defausse'][0][0]}} a le plus grand nombre de pièces defaussées : {{REQUEST_VARS['grand_defausse'][0][1]}} pièces</ul>
+			<ul>la partie numéro {{REQUEST_VARS['petit_defausse'][0][0]}} a le plus petit nombre de pièces defaussées : {{REQUEST_VARS['petit_defausse'][0][1]}} pièces</ul>
+			<ul>la partie numéro {{REQUEST_VARS['grand_pioche'][0][0]}} a le plus grand nombre de pièces piocchées : {{REQUEST_VARS['grand_pioche'][0][1]}} </ul>
+			<ul>la partie numéro {{REQUEST_VARS['petit_pioche'][0][0]}} a le plus petit nombre de pièces piochées : {{REQUEST_VARS['petit_pioche'][0][1]}} </ul>
+	</li>
 </ul>
 
-<!-- <div>
-	<img src="projet2/static/img/logo-lyon1.png" />
-</div> -->
+
 
 {% include 'message.html' %}
 

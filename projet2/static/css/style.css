@@ -16,9 +16,9 @@ footer {
 }
 
 header {
-    background-color: #FF9900;
+    background-color: #79675C;
     text-align: center;
-    border-radius: 1em;
+    
 }
 
 #div-central {
@@ -30,29 +30,35 @@ header {
     height: 100vh; /* Assure que le conteneur principal occupe toute la hauteur */
 }
 
+
+
+
 nav {
-    flex: 2;
-    height: 100%; /* La barre de navigation occupe toute la hauteur disponible */
-    display: flex;
-    flex-direction: column;
-    background-color: #b59ff7;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    margin-left: 2em;
-    line-height: 2em;
+    display: flex;           /* Utilise flexbox pour le positionnement des éléments */
+    flex-direction: column;  /* Aligne les éléments de menu verticalement */
+    align-items: center;     /* Centre horizontalement les éléments */
+    background-color: #9e8a7f; /* Couleur de fond du menu */
+    padding: 1em;
 }
+
+nav a {
+    color: #28221e;          /* Couleur du texte */
+    text-decoration: underline;   /* Enlève le soulignement */
+    display: block;          /* Permet de rendre chaque lien un bloc pour qu'il occupe toute la largeur */
+    text-align: center;      /* Centre le texte à l'intérieur de chaque lien */
+    padding: 0.5em 1em;      /* Espacement autour du texte */
+    width: 100%;             /* Les liens occupent toute la largeur disponible */
+}
+
 
 nav > ul {
     padding-left: 0.5em;
 }
 
-nav a {
-    color: #0000FF;
-    text-decoration: underline;
-}
+
 
 nav a:visited {
-    color: #0000FF;
+    color: #28221e;
     text-decoration: none;
 }
 
@@ -65,10 +71,9 @@ main {
 footer {
     display: flex;
     justify-content: space-around;
-    background-color: #669933;
-    border-radius: 1em;
+    background-color: #79675C;
     position: absolute;
-    bottom: 0;
+    bottom: auto;
     width: 100%;
 }
 
@@ -127,4 +132,15 @@ td {
         transparent 5px, /* Espace entre les lignes */
         transparent 10px /* Largeur totale de chaque répétition */
     );
+}
+
+
+
+.centered-text {
+    text-align: center;          /* Centre le texte horizontalement */
+    display: flex;                /* Utilise Flexbox pour aligner les éléments */
+    flex-direction: column;      /* Aligne les éléments l'un sous l'autre */
+    justify-content: center;     /* Centre les éléments verticalement (si nécessaire) */
+    align-items: center;         /* Centre les éléments horizontalement */
+    height: 100%;                 /* Assure que le conteneur prend toute la hauteur disponible */
 }

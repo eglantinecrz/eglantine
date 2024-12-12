@@ -1,6 +1,7 @@
 import psycopg
 from psycopg import sql
 from logzero import logger
+from datetime import datetime
 
 def execute_select_query(connexion, query, params=[]):
     """
@@ -99,11 +100,11 @@ def get_stat_joueur(connexion):
 
 
 def get_4briques_aleatoires(connexion):
-    query = 'SELECT Id_brique, longueur, largeur, couleur FROM Brique WHERE longueur <= 2 OR largeur <= 2 ORDER BY RANDOM() LIMIT 4'
+    query = 'SELECT Id_brique, longueur, largeur, couleur FROM Brique WHERE longueur <= 2 AND largeur <= 2 ORDER BY RANDOM() LIMIT 4'
     return execute_select_query(connexion,query)
 
 def get_brique_aleatoire(connexion):
-    query = 'SELECT Id_brique, longueur, largeur, couleur FROM Brique WHERE longueur <= 2 OR largeur <= 2 ORDER BY RANDOM() LIMIT 1'
+    query = 'SELECT Id_brique, longueur, largeur, couleur FROM Brique WHERE longueur <= 2 AND largeur <= 2 ORDER BY RANDOM() LIMIT 1'
     return execute_select_query(connexion,query)
 
 def get_moyenne_mois_annee(connexion):
@@ -113,3 +114,50 @@ def get_moyenne_mois_annee(connexion):
 def get_top3_parties(connexion):
     query = 'SELECT p.Id_partie, SUM(b.longueur * b.largeur) AS surface_briques, COUNT(DISTINCT h.Id_brique) AS nb_briques_utilisees FROM PARTIE p JOIN TOUR t ON t.Id_partie = p.Id_partie JOIN Historiser h ON h.Id_partie = t.Id_partie AND h.Numéro = t.Numéro JOIN Brique b ON b.Id_brique = h.Id_brique GROUP BY p.Id_partie ORDER BY surface_briques DESC, nb_briques_utilisees DESC LIMIT 3'
     return execute_select_query(connexion,query)
+
+def get_plus_petit_defausse(connexion):
+    query = 'SELECT Id_partie, COUNT(*) AS nb_defaussées FROM legos.Historiser WHERE action = \'défaussée\' GROUP BY Id_partie ORDER BY nb_defaussées ASC LIMIT 1'
+    return execute_select_query(connexion,query)
+
+def get_plus_grand_defausse(connexion):
+    query = 'SELECT Id_partie, COUNT(*) AS nb_defaussées FROM legos.Historiser WHERE action = \'défaussée\' GROUP BY Id_partie ORDER BY nb_defaussées DESC LIMIT 1'
+    return execute_select_query(connexion,query)
+
+def get_plus_grand_pioche(connexion):
+    query = 'SELECT Id_partie, COUNT(*) AS nb_piochées FROM legos.Historiser WHERE action = \'piochée\' GROUP BY Id_partie ORDER BY nb_piochées DESC LIMIT 1'
+    return execute_select_query(connexion,query)
+
+def get_plus_petit_pioche(connexion):
+    query = 'SELECT Id_partie, COUNT(*) AS nb_piochées FROM legos.Historiser WHERE action = \'piochée\' GROUP BY Id_partie ORDER BY nb_piochées ASC LIMIT 1'
+    return execute_select_query(connexion,query)
+
+def get_joueur(connexion,):
+    query='select prénom, id_gagnante from joueuse'
+    return execute_select_query(connexion,query)
+
+def get_4briques_aleatoires_difficile(connexion):
+    query = 'SELECT Id_brique, longueur, largeur, couleur FROM Brique  ORDER BY RANDOM() LIMIT 4'
+    return execute_select_query(connexion,query)
+
+def get_brique_aleatoire_difficle(connexion):
+    query = 'SELECT Id_brique, longueur, largeur, couleur FROM Brique ORDER BY RANDOM() LIMIT 1'
+    return execute_select_query(connexion,query)
+
+def insert_joueur(connexion,id_gagnante,d, nom_joueur):
+    
+    """date=str(datetime.now())
+    print(date)"""
+    query = 'INSERT INTO legos.joueuse VALUES (%s,%s,%s,%s)'
+
+    # Exécuter la requête
+    return execute_other_query(connexion, query, [id_gagnante,d,nom_joueur,None])
+    
+
+def insert_tour(connexion,Id_partie,numero,id_gagnante):
+    query = 'INSERT INTO legos.tour VALUES(%s,%s,%s)'
+    return execute_other_query(connexion, query,[Id_partie, numero, id_gagnante])
+
+def get_joueur_by_name(connexion,nom_joueur):
+    query = 'SELECT * FROM joueuse where prénom=%s'
+    return execute_select_query(connexion, query, [nom_joueur])
+

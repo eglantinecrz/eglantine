@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<h1>Règles du jeu</h1>
+<p>Le jeu consiste à remplir une grille en recouvrant toutes ses cases cibles avec des briques provenant d'une pioche. Chaque grille comporte des cases vides et des cases cibles, et le but du jeu est de recouvrir toutes les cases cibles.
+
+    À chaque tour, le joueur dispose de 4 briques dans la pioche et peut effectuer deux actions possibles :<br>
+    
+    <h4>1. **Placer une brique** :</h4>Le joueur peut choisir une brique dans la pioche et la placer sur la grille, en s'assurant que les cases de la brique recouvrent uniquement des cases cibles libres.<br>
+    <h4>2. **Défausser une brique** :</h4>Le joueur peut choisir de ne pas placer une brique et de la défausser. Elle sera alors remplacée par une nouvelle brique tirée aléatoirement de la base de données.<br>
+    
+    À la fin de chaque tour, il est vérifié si toutes les cases cibles ont été recouvertes. Si c'est le cas, la partie est gagnée. Le score du joueur correspond au nombre de tours nécessaires pour recouvrir toutes les cases cibles. L'objectif est d'atteindre le score le plus bas possible.
+    
+    En résumé, le joueur doit gérer la pioche et placer les briques de manière stratégique sur la grille pour recouvrir les cases cibles tout en minimisant le nombre de tours.</p>
+
+    {%endblock%}

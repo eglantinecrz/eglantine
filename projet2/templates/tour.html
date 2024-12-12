@@ -1,0 +1,69 @@
+
+
+{% extends "base.html" %}
+
+{% block main_content %}
+{% if SESSION['nb_tour_max']>0 %}
+    {% if SESSION['aleacible']>0 %}
+        <h1>Partie : {{SESSION['nb_parties']}}</h1>
+        <h1>Tour : {{SESSION['nb-tour']}}</h1>
+        
+        <h2>Grille</h2>
+        <form method="POST" name="jeu">
+            {% if SESSION['configuration'] %}
+                <table>
+                    {% for ligne in SESSION['configuration'] %}
+                        <tr>
+                        {% set outerloop = loop %}
+                        {% for case in ligne %}
+                            {% if case == -1 %}
+                                <td class="gris"> 
+                                    <input type="checkbox"  name="cases" value="{{loop.index0}},{{outerloop.index0}}"/>
+                                </td>
+                            {% elif case == 0 %}
+                                <td>&nbsp;</td>
+                            {% else %}
+                                <td  style="background-color: {{ case[1] }};"> 
+                                    {{case[0]}}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            {% endif %}
+            
+
+
+            <h3>Pioche</h3>
+
+
+                <ul> 
+                {% for instance in SESSION['briques_ale'] %}
+                    <li><label><input type="radio" name="nom"  value="{{instance[0]}}" />identifiant : {{instance[0]}}, longueur :{{instance[1]}}, largeur : {{instance[2]}}, couleur : {{instance[3]}}</label><br></li>
+                
+                {% endfor %}
+                </ul>      
+            
+                <input type="submit" name="bouton1" value="defausser" />
+                <input type="submit" name="place" value="placer"/>
+                <input type="submit"  name="abandon" value="abandonner"/>
+        </form>
+
+            
+    {% else %}
+        <h3>Vous avez gagné !!!<br>votre score est de {{SESSION['nb-tour']-1}}</h3>
+        <div style="text-align: center;">
+            <a href="/">
+                <img src="/projet2/static/img/bravo.png" alt="Image centrée" style="display: block; margin: 0 auto;">
+                >
+            </a>
+        </div>
+    {% endif %}
+{% else %}
+    <h3>Vous avez Perdu!! <br> votre score est de : {{SESSION['nb-tour']}}</h3>
+{% endif %}
+
+{% endblock %}

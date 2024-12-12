@@ -1,0 +1,6 @@
+2024-12-10 11:36:07.772093 - consultation de la page accueil
+2024-12-10 11:36:11.821293 - consultation de la page accueil
+2024-12-10 11:36:12.679799 - consultation de la page jouer
+2024-12-10 11:36:44.766801 - consultation de la page accueil
+2024-12-10 11:36:52.157782 - consultation de l'historique
+2024-12-10 11:37:02.200625 - consultation de l'historique

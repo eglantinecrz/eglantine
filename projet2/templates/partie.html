@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<h4>Donnez les dimensions de votre grille</h4><br>
+<form method="POST" >
+	<label for="largeur">hauteur : </label>
+		<input type="number" name="largeur" /><br><br>
+		<label for="longueur">longueur : </label>
+		<input type="number" name="longueur" /><br><br>
+		<h2>Choisissez votre difficultée</h2>
+		<label><input type="radio" name="difficulte"  value="facile" />facile</label><br>
+		<label><input type="radio" name="difficulte"  value="difficile" />difficile</label><br>
+		<h2>Choisissez votre joueur:</h2>
+		<select name="joueur">
+			<option value="">--choisissez un joueur--</option>
+			{% for joueur in SESSION['joueur'] %}
+			<option value="{{joueur}}">{{joueur[0]}}</option>
+			{%endfor%}
+			
+			
+		</select><br><br>
+
+		<input type="submit" value="configurer" name="configuration"/>
+</form>
+
+
+{% if POST and "configuration" in POST %}
+<h2>Voici votre configuration</h2>
+<p>Dimension de la grille : {{ SESSION['selec-long'] }} x {{SESSION['selec-hauteur']}}<br>
+	difficultée: {{SESSION['difficulte'] }}<br>
+	joueur : {{SESSION['selec_joueur']}}
+	<form method="POST" action="tour">
+		<input type="submit" value="Démarrer" name="partie"/>
+	</form>
+</p>
+{% endif %}
+
+{% endblock %}

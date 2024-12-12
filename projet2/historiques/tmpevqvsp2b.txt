@@ -1,0 +1,5 @@
+2024-12-12 14:29:58.337647 - consultation de la page accueil
+2024-12-12 14:29:59.695216 - consultation de la page configurer une partie
+2024-12-12 14:30:04.728379 - consultation de la page configurer une partie
+2024-12-12 14:30:11.822482 - consultation de l'historique
+2024-12-12 14:30:14.322973 - consultation de l'historique

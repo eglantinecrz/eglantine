@@ -9,9 +9,9 @@ controleur = "controleurs/accueil.py"
 template = "accueil.html"
 
 [[routes]]
-url = "jouer"
-controleur = "controleurs/jouer.py"
-template = "jouer.html"
+url = "grille_statique"
+controleur = "controleurs/grille_statique.py"
+template = "grille_statique.html"
 
 [[routes]]
 url = "grille_aleatoire"
@@ -27,3 +27,19 @@ template = "historique.html"
 url = "ajouter"
 controleur = "controleurs/ajouter.py"
 template = "ajouter.html"
+
+[[routes]]
+url = "partie"
+controleur = "controleurs/partie.py"
+template = "partie.html"
+
+
+[[routes]]
+url="tour"
+controleur = "controleurs/tour.py"
+template = "tour.html"
+
+[[routes]]
+url="instruction"
+controleur = "controleurs/instruction.py"
+template = "instruction.html"

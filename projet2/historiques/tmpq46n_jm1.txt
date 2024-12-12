@@ -1,0 +1,7 @@
+2024-12-09 22:36:03.030665 - consultation de la page accueil
+2024-12-09 22:36:04.972612 - consultation de l'historique
+2024-12-09 22:36:06.193625 - consultation de la page jouer
+2024-12-09 22:36:07.341910 - consultation de la page ajouter joueur
+2024-12-09 22:36:08.199539 - consultation de la page configurer une partie
+2024-12-09 22:36:09.242016 - consultation de l'historique
+2024-12-09 22:36:10.577021 - consultation de l'historique
